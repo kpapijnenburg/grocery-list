@@ -16,32 +16,25 @@ class Toolbar extends Component {
   render() {
     const { onAdd } = this.props;
     return (
-      <form>
-        <label>
-          Name:
-          <input type="text" name="name" />
-        </label>
-        <input onClick={this.onAdd} type="submit" value="Submit" />
-      </form>
-      // <div>
-      //   <br />
-      //   <TextField
-      //     placeholder="Type here..."
-      //     margin="normal"
-      //     fullWidth={true}
-      //     type="text"
-      //   />
-      //   <br />
-      //   <Button
-      //     variant="contained"
-      //     color="primary"
-      //     fullWidth={true}
-      //     onClick={onAdd}
-      //   >
-      //     Add
-      //   </Button>
-      //   <hr />
-      // </div>
+      <div>
+        <br />
+        <TextField
+          placeholder="Type here..."
+          margin="normal"
+          fullWidth={true}
+          type="text"
+        />
+        <br />
+        <Button
+          variant="contained"
+          color="primary"
+          fullWidth={true}
+          onClick={onAdd}
+        >
+          Add
+        </Button>
+        <hr />
+      </div>
     );
   }
 }
