@@ -1,12 +1,17 @@
 import React from "react";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
 
 const NavBar = () => {
   return (
-    <nav className="navbar navbar-dark bg-dark">
-      <a className="navbar-brand" href="#">
-        Grocery list{" "}
-      </a>
-    </nav>
+    <AppBar position="static" color="primary">
+      <Toolbar>
+        <Typography variant="h6" color="inherit">
+          Grocery List
+        </Typography>
+      </Toolbar>
+    </AppBar>
   );
 };
 
