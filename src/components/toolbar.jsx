@@ -3,12 +3,21 @@ import React, { Component } from "react";
 class Toolbar extends Component {
   state = {};
 
-  render(){
-      return (
-        <div>
-            <h1>Toolbar</h1>
-        </div>
-      );
+  render() {
+    const { onAdd } = this.props;
+
+    return (
+      <div>
+        <input className="form-control" type="text" />
+        <button
+          onClick={onAdd}
+          type="button"
+          className="btn btn-primary btn-block"
+        >
+          Add
+        </button>
+      </div>
+    );
   }
 }
 
