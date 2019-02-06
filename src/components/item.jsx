@@ -1,7 +1,15 @@
 import React, { Component } from "react";
 import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
-import { TableRow, TableCell, Tab } from "@material-ui/core";
+import { TableRow, TableCell } from "@material-ui/core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faPlus,
+  faMinus,
+  faTrash,
+  faAngleUp,
+  faAngleDown
+} from "@fortawesome/free-solid-svg-icons";
 
 class Item extends Component {
   state = {
@@ -37,20 +45,21 @@ class Item extends Component {
         </TableCell>
         <TableCell>
           <Button text="+" variant="outlined" onClick={() => onIncrement(id)}>
-            {" "}
-            +{" "}
+            <FontAwesomeIcon icon={faPlus} />
           </Button>
-        </TableCell>
-        <TableCell>
           <Button variant="outlined" onClick={() => onDecrement(id)}>
-            {" "}
-            -{" "}
+            <FontAwesomeIcon icon={faMinus} />
+          </Button>
+          <Button variant="outlined" onClick={() => onDelete(id)}>
+            <FontAwesomeIcon icon={faTrash} />
           </Button>
         </TableCell>
         <TableCell>
-          <Button variant="outlined" onClick={() => onDelete(id)}>
-            {" "}
-            X{" "}
+          <Button>
+            <FontAwesomeIcon icon={faAngleUp} />
+          </Button>
+          <Button>
+            <FontAwesomeIcon icon={faAngleDown} />
           </Button>
         </TableCell>
       </TableRow>

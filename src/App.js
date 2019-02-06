@@ -18,10 +18,6 @@ class App extends Component {
     ]
   };
 
-  constructor(props) {
-    super(props);
-  }
-
   handleIncrement = id => {
     this.setState(
       this.state.items.map(i =>
@@ -47,6 +43,10 @@ class App extends Component {
     this.setState({ items });
   };
 
+  handleChecked = id => {
+    console.log(id);
+  };
+
   handleAdd = itemName => {
     const { items } = this.state;
     const item = { id: items.length + 1, name: itemName, amount: 1 };
@@ -62,16 +62,16 @@ class App extends Component {
           <Toolbar onAdd={this.handleAdd} />
           <Table padding="dense">
             <TableHead>
-              <TableCell> Checked </TableCell>
+              <TableCell> </TableCell>
               <TableCell> Name </TableCell>
               <TableCell> Amount </TableCell>
-              <TableCell> Add </TableCell>
-              <TableCell> Subtract </TableCell>
-              <TableCell> Delete </TableCell>
+              <TableCell> </TableCell>
+              <TableCell> </TableCell>
             </TableHead>
             <TableBody>
               <ItemList
                 items={this.state.items}
+                onChecked={this.handleChecked}
                 onIncrement={this.handleIncrement}
                 onDelete={this.handleDelete}
                 onDecrement={this.handleDecrement}
