@@ -22,7 +22,7 @@
   color: #61dafb;
 }
 
-span.checked {
+p.checked {
   text-decoration: line-through;
   color: gray;
 }

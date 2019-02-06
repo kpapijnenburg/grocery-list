@@ -3,6 +3,10 @@ import "./App.css";
 import ItemList from "./components/itemlist";
 import Toolbar from "./components/toolbar";
 import NavBar from "./components/navbar";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableHead from "@material-ui/core/TableHead";
 
 class App extends Component {
   state = {
@@ -56,12 +60,24 @@ class App extends Component {
         <NavBar />
         <main className="container">
           <Toolbar onAdd={this.handleAdd} />
-          <ItemList
-            items={this.state.items}
-            onIncrement={this.handleIncrement}
-            onDelete={this.handleDelete}
-            onDecrement={this.handleDecrement}
-          />
+          <Table padding="dense">
+            <TableHead>
+              <TableCell> Checked </TableCell>
+              <TableCell> Name </TableCell>
+              <TableCell> Amount </TableCell>
+              <TableCell> Add </TableCell>
+              <TableCell> Subtract </TableCell>
+              <TableCell> Delete </TableCell>
+            </TableHead>
+            <TableBody>
+              <ItemList
+                items={this.state.items}
+                onIncrement={this.handleIncrement}
+                onDelete={this.handleDelete}
+                onDecrement={this.handleDecrement}
+              />
+            </TableBody>
+          </Table>
         </main>
       </React.Fragment>
     );

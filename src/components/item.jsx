@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
+import { TableRow, TableCell, Tab } from "@material-ui/core";
 
 class Item extends Component {
   state = {
@@ -19,19 +20,40 @@ class Item extends Component {
 
     const { id, name, amount, onDelete, onIncrement, onDecrement } = this.props;
     return (
-      <div>
-        <Checkbox
-          onChange={this.toggleChange}
-          checked={this.state.isChecked}
-          color="default"
-        />
-        <span className={classes}>
-          {name}: {amount}
-        </span>
-        <Button onClick={() => onIncrement(id)}> + </Button>
-        <Button onClick={() => onDecrement(id)}> - </Button>
-        <Button onClick={() => onDelete(id)}> X </Button>
-      </div>
+      <TableRow key={id}>
+        <TableCell padding="checkbox">
+          <Checkbox
+            onChange={this.toggleChange}
+            checked={this.state.isChecked}
+            color="default"
+          />
+        </TableCell>
+        <TableCell>
+          <p className={classes}>{name}</p>
+        </TableCell>
+        <TableCell>
+          {" "}
+          <p>{amount}</p>
+        </TableCell>
+        <TableCell>
+          <Button text="+" variant="outlined" onClick={() => onIncrement(id)}>
+            {" "}
+            +{" "}
+          </Button>
+        </TableCell>
+        <TableCell>
+          <Button variant="outlined" onClick={() => onDecrement(id)}>
+            {" "}
+            -{" "}
+          </Button>
+        </TableCell>
+        <TableCell>
+          <Button variant="outlined" onClick={() => onDelete(id)}>
+            {" "}
+            X{" "}
+          </Button>
+        </TableCell>
+      </TableRow>
     );
   }
 }
