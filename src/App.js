@@ -43,8 +43,11 @@ class App extends Component {
     this.setState({ items });
   };
 
-  handleAdd = item => {
-    console.log("handleAdd", item);
+  handleAdd = itemName => {
+    const { items } = this.state;
+    const item = { id: items.length + 1, name: itemName, amount: 1 };
+    items.push(item);
+    this.setState({ items });
   };
 
   render() {

@@ -7,9 +7,11 @@ class Toolbar extends Component {
     value: ""
   };
 
-  onAdd(event){
-    console.log(this.name.getText())
-  }
+  handleChange = event => {
+    this.setState({
+      value: event.target.value
+    });
+  };
 
   render() {
     const { onAdd } = this.props;
@@ -22,14 +24,14 @@ class Toolbar extends Component {
           margin="normal"
           fullWidth={true}
           type="text"
-          ref={x => this.name = x}
+          onChange={this.handleChange}
         />
         <br />
         <Button
           variant="contained"
           color="primary"
           fullWidth={true}
-          onClick={() => this.onAdd(this.name.value)}
+          onClick={() => onAdd(this.state.value)}
         >
           Add
         </Button>
