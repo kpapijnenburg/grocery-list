@@ -7,14 +7,13 @@ class Toolbar extends Component {
     value: ""
   };
 
-  onAdd(event) {
-    event.preventDefault();
-    this.setState({ value: event.target.value });
-    console.log(this.state);
+  onAdd(event){
+    console.log(this.name.getText())
   }
 
   render() {
     const { onAdd } = this.props;
+
     return (
       <div>
         <br />
@@ -23,13 +22,14 @@ class Toolbar extends Component {
           margin="normal"
           fullWidth={true}
           type="text"
+          ref={x => this.name = x}
         />
         <br />
         <Button
           variant="contained"
           color="primary"
           fullWidth={true}
-          onClick={onAdd}
+          onClick={() => this.onAdd(this.name.value)}
         >
           Add
         </Button>
