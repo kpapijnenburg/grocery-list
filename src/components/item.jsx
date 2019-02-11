@@ -21,8 +21,16 @@ class Item extends Component {
       isChecked: !this.state.isChecked
     });
 
-    this.props.onChecked(id)
+    this.props.onChecked(id, this.state.isChecked)
   };
+
+  handleIndexIncrement = id => {
+
+  }
+
+  handleIndexDecrement = id => {
+
+  }
 
   render() {
     let classes = "";

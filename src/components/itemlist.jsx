@@ -4,6 +4,9 @@ import Item from "./item";
 class ItemList extends Component {
   render() {
     const { items, onDelete, onIncrement, onDecrement, onChecked } = this.props;
+
+    items.sort(function(a,b) {return a.isChecked - b.isChecked})
+
     return items.map(item => (
       <Item
         key={item.id}

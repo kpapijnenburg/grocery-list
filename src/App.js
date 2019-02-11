@@ -21,7 +21,9 @@ class App extends Component {
   handleIncrement = id => {
     this.setState(
       this.state.items.map(i =>
-        i.id !== id ? i : { id: id, name: i.name, amount: i.amount++, isChecked: i.isChecked }
+        i.id !== id
+          ? i
+          : { id: id, name: i.name, amount: i.amount++, isChecked: i.isChecked }
       )
     );
   };
@@ -32,7 +34,14 @@ class App extends Component {
     if (item.amount > 0) {
       this.setState(
         this.state.items.map(i =>
-          i.id !== id ? i : { id: id, name: i.name, amount: i.amount--, isChecked: i.isChecked }
+          i.id !== id
+            ? i
+            : {
+                id: id,
+                name: i.name,
+                amount: i.amount--,
+                isChecked: i.isChecked
+              }
         )
       );
     }
@@ -43,18 +52,41 @@ class App extends Component {
     this.setState({ items });
   };
 
-  handleChecked = id => {
-    console.log(id);
+  handleChecked = (id, state) => {
+    const { items } = this.state;
+
+    const newItems = items.map(function(item) {
+      return item.id !== id
+        ? item
+        : {
+            id: item.id,
+            name: item.name,
+            amount: item.amount,
+            isChecked: !state
+          };
+    });
+
+    this.setState({items: newItems });
   };
 
   handleAdd = itemName => {
     const { items } = this.state;
-    const item = { id: items.length + 1, name: itemName, amount: 1, isChecked: false };
+
+    const item = {
+      id: items.length + 1,
+      name: itemName,
+      amount: 1,
+      isChecked: false
+    };
+
     items.push(item);
+
     this.setState({ items });
   };
 
   render() {
+    const {items} = this.state;
+
     return (
       <React.Fragment>
         <NavBar />
@@ -70,7 +102,7 @@ class App extends Component {
             </TableHead>
             <TableBody>
               <ItemList
-                items={this.state.items}
+                items={items}
                 onChecked={this.handleChecked}
                 onIncrement={this.handleIncrement}
                 onDelete={this.handleDelete}
