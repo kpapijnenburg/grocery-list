@@ -16,10 +16,12 @@ class Item extends Component {
     isChecked: false
   };
 
-  toggleChange = () => {
+  toggleChange = id => {
     this.setState({
       isChecked: !this.state.isChecked
     });
+
+    this.props.onChecked(id)
   };
 
   render() {
@@ -31,7 +33,7 @@ class Item extends Component {
       <TableRow key={id}>
         <TableCell padding="checkbox">
           <Checkbox
-            onChange={this.toggleChange}
+            onChange={() => this.toggleChange(id)}
             checked={this.state.isChecked}
             color="default"
           />

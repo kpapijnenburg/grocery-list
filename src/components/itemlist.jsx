@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import Item from "./item";
-import TableRow from "@material-ui/core/TableRow";
 
 class ItemList extends Component {
   render() {
-    const { items, onDelete, onIncrement, onDecrement } = this.props;
+    const { items, onDelete, onIncrement, onDecrement, onChecked } = this.props;
     return items.map(item => (
       <Item
         key={item.id}
@@ -14,6 +13,7 @@ class ItemList extends Component {
         onDelete={onDelete}
         onIncrement={onIncrement}
         onDecrement={onDecrement}
+        onChecked={onChecked}
       />
     ));
   }

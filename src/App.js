@@ -11,17 +11,17 @@ import TableHead from "@material-ui/core/TableHead";
 class App extends Component {
   state = {
     items: [
-      { id: 1, name: "Banaan", amount: 1 },
-      { id: 2, name: "Appel", amount: 1 },
-      { id: 3, name: "Peer", amount: 1 },
-      { id: 4, name: "Kers", amount: 1 }
+      { id: 1, name: "Banaan", amount: 1, isChecked: false },
+      { id: 2, name: "Appel", amount: 1, isChecked: false },
+      { id: 3, name: "Peer", amount: 1, isChecked: false },
+      { id: 4, name: "Kers", amount: 1, isChecked: false }
     ]
   };
 
   handleIncrement = id => {
     this.setState(
       this.state.items.map(i =>
-        i.id !== id ? i : { id: id, name: i.name, amount: i.amount++ }
+        i.id !== id ? i : { id: id, name: i.name, amount: i.amount++, isChecked: i.isChecked }
       )
     );
   };
@@ -32,7 +32,7 @@ class App extends Component {
     if (item.amount > 0) {
       this.setState(
         this.state.items.map(i =>
-          i.id !== id ? i : { id: id, name: i.name, amount: i.amount-- }
+          i.id !== id ? i : { id: id, name: i.name, amount: i.amount--, isChecked: i.isChecked }
         )
       );
     }
@@ -49,7 +49,7 @@ class App extends Component {
 
   handleAdd = itemName => {
     const { items } = this.state;
-    const item = { id: items.length + 1, name: itemName, amount: 1 };
+    const item = { id: items.length + 1, name: itemName, amount: 1, isChecked: false };
     items.push(item);
     this.setState({ items });
   };
